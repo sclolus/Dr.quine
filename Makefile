@@ -40,14 +40,14 @@ test_$(NAME_1): $(NAME_1)
 	diff $(SRC_COLLEEN) diff.txt && echo "No DIFF"
 
 test_$(NAME_2): $(NAME_2)
-	./$(NAME_2) > diff.txt
-	cat diff.txt
+	./$(NAME_2)
+	cat Grace_kid.c
 	@echo	"--------------------DIFF_________________________"
-	diff $(SRC_GRACE) diff.txt && echo "No DIFF"
+	diff $(SRC_GRACE) Grace_kid.c &&  echo "No DIFF"
 
 
 test_$(NAME_3): $(NAME_3)
 	./$(NAME_3) > diff.txt
 	cat diff.txt
 	echo	"--------------------DIFF_________________________"
-	diff $(SRC_SULLY) diff.txt∑
+	diff $(SRC_SULLY) diff.txt
