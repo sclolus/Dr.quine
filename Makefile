@@ -47,7 +47,7 @@ test_$(NAME_2): $(NAME_2)
 
 
 test_$(NAME_3): $(NAME_3)
-	./$(NAME_3) > diff.txt
-	cat diff.txt
+	./$(NAME_3)
+	cat Sully_5.c
 	echo	"--------------------DIFF_________________________"
-	diff $(SRC_SULLY) diff.txt
+	diff $(SRC_SULLY) Sully_5.c
