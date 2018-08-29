@@ -2,15 +2,18 @@ NAME_1= Colleen
 NAME_2= Grace
 NAME_3= Sully
 # NAME_3= Colleen
-SRC_COLLEEN= C/Colleen.c
-SRC_SULLY= C/Sully.c
-SRC_GRACE= C/Grace.c
+SRC_COLLEEN= Colleen.s
+SRC_SULLY= Sully.s
+SRC_GRACE= Grace.s
 
-OBJ_COLLEEN= $(SRC_COLLEEN:.c=.o)
-OBJ_SULLY= $(SRC_SULLY:.c=.o)
-OBJ_GRACE= $(SRC_GRACE:.c=.o)
+OBJ_COLLEEN= $(SRC_COLLEEN:.s=.o)
+OBJ_SULLY= $(SRC_SULLY:.s=.o)
+OBJ_GRACE= $(SRC_GRACE:.s=.o)
 CC= gcc
 CC_FLAGS= -v -Wall -Wextra -Werror
+ASM_CC_ARCH= macho64
+ASM_CC_FLAGS= -f $(ASM_CC_ARCH)
+
 #VPATH=./srcs:./obj:./includes/
 
 all: submodule $(NAME_3) $(NAME_1)
@@ -23,8 +26,8 @@ $(NAME_2): $(OBJ_GRACE)
 	$(CC) $(CC_FLAGS) $^ -o $@
 $(NAME_3):
 	$(CC) $(CC_FLAGS) $(SRC_SULLY) $^ -o $@
-%.o : %.c
-	$(CC) $(CC_FLAGS) $< -c  -I./includes -o $@
+%.o : %.s
+	nasm $(ASM_CC_FLAGS) $< -o $@
 
 clean:
 	rm -f $(OBJ_COLLEEN) $(OBJ_SULLY)
