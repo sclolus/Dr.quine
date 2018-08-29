@@ -24,8 +24,8 @@ $(NAME_1): $(OBJ_COLLEEN)
 	$(CC) $(CC_FLAGS) $^ -o $@
 $(NAME_2): $(OBJ_GRACE)
 	$(CC) $(CC_FLAGS) $^ -o $@
-$(NAME_3):
-	$(CC) $(CC_FLAGS) $(SRC_SULLY) $^ -o $@
+$(NAME_3): $(OBJ_SULLY)
+	$(CC) $(CC_FLAGS) $^ -o $@
 %.o : %.s
 	nasm $(ASM_CC_FLAGS) $< -o $@
 
