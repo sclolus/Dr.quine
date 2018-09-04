@@ -2,12 +2,8 @@
 
 RANDOM_DEFINED_VARIABLE=''
 MAIN='
-print() {
-	printf "$SRC" "$MAIN" "$SRC" $
-}
-
 main() {
-	print
+	printf "$SRC" "$MAIN" "$SRC" $ > Grace_kid.sh
 }
 main
 '
@@ -19,7 +15,7 @@ MAIN=\x27%s\x27
 
 SRC=\x22%s\x22
 #outsider comment
-eval \x22%cMAIN\x22 > Grace_kid.sh
+eval \x22%cMAIN\x22
 "
 #outsider comment
-eval "$MAIN" > Grace_kid.sh
+eval "$MAIN"

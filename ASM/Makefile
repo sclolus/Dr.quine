@@ -16,7 +16,7 @@ ASM_CC_FLAGS= -f $(ASM_CC_ARCH)
 
 #VPATH=./srcs:./obj:./includes/
 
-all: submodule $(NAME_3) $(NAME_1)
+all: submodule  $(NAME_1) $(NAME_2) $(NAME_3)
 
 submodule:
 

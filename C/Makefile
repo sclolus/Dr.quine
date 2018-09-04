@@ -13,7 +13,7 @@ CC= gcc
 CC_FLAGS= -v -Wall -Wextra -Werror -g3 -fsanitize=address
 #VPATH=./srcs:./obj:./includes/
 
-all: submodule $(NAME_3) $(NAME_1)
+all: submodule  $(NAME_1) $(NAME_2) $(NAME_3)
 
 submodule:
 
