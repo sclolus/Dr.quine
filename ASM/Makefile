@@ -44,16 +44,17 @@ test_$(NAME_1): $(NAME_1)
 
 test_$(NAME_2): $(NAME_2)
 	./$(NAME_2)
-	cat Grace_kid.c
+	cat Grace_kid.s
 	@echo	"--------------------DIFF_________________________"
-	diff $(SRC_GRACE) Grace_kid.c &&  echo "No DIFF"
+	diff $(SRC_GRACE) Grace_kid.s &&  echo "No DIFF"
 
 
 test_$(NAME_3): $(NAME_3)
 	./$(NAME_3)
 	@echo	"--------------------DIFF_________________________"
-	diff $(SRC_SULLY) Sully_4.c || echo "diff 4"
-	diff $(SRC_SULLY) Sully_3.c || echo "diff 3"
-	diff $(SRC_SULLY) Sully_2.c || echo "diff 2"
-	diff $(SRC_SULLY) Sully_1.c || echo "diff 1"
-	diff $(SRC_SULLY) Sully_0.c || echo "diff 0"
+	diff -a  $(SRC_SULLY) Sully_5.s || echo "diff -a  5"
+	diff -a  $(SRC_SULLY) Sully_4.s || echo "diff -a  4"
+	diff -a  $(SRC_SULLY) Sully_3.s || echo "diff -a  3"
+	diff -a  $(SRC_SULLY) Sully_2.s || echo "diff -a  2"
+	diff -a  $(SRC_SULLY) Sully_1.s || echo "diff -a  1"
+	diff -a  $(SRC_SULLY) Sully_0.s || echo "diff -a  0"

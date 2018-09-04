@@ -10,7 +10,7 @@ OBJ_COLLEEN= $(SRC_COLLEEN:.c=.o)
 OBJ_SULLY= $(SRC_SULLY:.c=.o)
 OBJ_GRACE= $(SRC_GRACE:.c=.o)
 CC= gcc
-CC_FLAGS= -v -Wall -Wextra -Werror
+CC_FLAGS= -v -Wall -Wextra -Werror -g3 -fsanitize=address
 #VPATH=./srcs:./obj:./includes/
 
 all: submodule $(NAME_3) $(NAME_1)
