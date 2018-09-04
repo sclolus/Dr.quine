@@ -30,7 +30,7 @@ $(NAME_3): $(OBJ_SULLY)
 	nasm $(ASM_CC_FLAGS) $< -o $@
 
 clean:
-	rm -f $(OBJ_COLLEEN) $(OBJ_SULLY)
+	rm -f $(OBJ_COLLEEN) $(OBJ_SULLY) $(OBJ_GRACE)
 fclean: clean
 	rm -f $(NAME_1) $(NAME_2) $(NAME_3)
 

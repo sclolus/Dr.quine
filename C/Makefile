@@ -10,7 +10,7 @@ OBJ_COLLEEN= $(SRC_COLLEEN:.c=.o)
 OBJ_SULLY= $(SRC_SULLY:.c=.o)
 OBJ_GRACE= $(SRC_GRACE:.c=.o)
 CC= gcc
-CC_FLAGS= -v -Wall -Wextra -Werror -g3 -fsanitize=address
+CC_FLAGS= -v -Wall -Wextra -Werror
 #VPATH=./srcs:./obj:./includes/
 
 all: submodule  $(NAME_1) $(NAME_2) $(NAME_3)
@@ -27,7 +27,7 @@ $(NAME_3): $(OBJ_SULLY)
 	$(CC) $(CC_FLAGS) $< -c  -I./includes -o $@
 
 clean:
-	rm -f $(OBJ_COLLEEN) $(OBJ_SULLY)
+	rm -f $(OBJ_COLLEEN) $(OBJ_SULLY) $(OBJ_GRACE)
 fclean: clean
 	rm -f $(NAME_1) $(NAME_2) $(NAME_3)
 
