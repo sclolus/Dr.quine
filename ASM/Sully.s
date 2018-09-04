@@ -20,116 +20,116 @@ extern _open
 %macro MAIN 0
 global _main
 _main:
-	;asm quine
+;asm quine
 
-	push rbp
-	mov rbp, rsp
-	sub rsp, 16
+push rbp
+mov rbp, rsp
+sub rsp, 16
 
-	mov rax, ITER
-	cmp rax, 1
-	jl .end
-	inc rax
-	mov qword [rbp - 8], rax
+mov rax, ITER
+cmp rax, 1
+jl .end
+inc rax
+mov qword [rbp - 8], rax
 
-	mov rdi, rsp
-	lea rsi, [rel kid_name_src]
-	mov rdx, qword [rbp - 8]
-	dec rdx
-	mov al, 0
-	call _asprintf
-	cmp rax, -1
-	je .end
+mov rdi, rsp
+lea rsi, [rel kid_name_src]
+mov rdx, qword [rbp - 8]
+dec rdx
+mov al, 0
+call _asprintf
+cmp rax, -1
+je .end
 
-	mov rdi, [rel rsp]
-	mov rsi, WRCREAT_EXCL
-	mov rdx, S_IRWXU
-	call _open
-	cmp rax, -1
-	je .dec_iter
-	jmp .continue
+mov rdi, [rel rsp]
+mov rsi, WRCREAT_EXCL
+mov rdx, S_IRWXU
+call _open
+cmp rax, -1
+je .dec_iter
+jmp .continue
 .dec_iter:
-	mov rax, qword[rbp - 8]
-	dec rax
-	mov qword [rbp - 8], rax
+mov rax, qword[rbp - 8]
+dec rax
+mov qword [rbp - 8], rax
 
 .continue:
-	mov rdi, rsp
-	lea rsi, [rel kid_name_src]
-	mov rdx, qword [rbp - 8]
-	dec rdx
-	mov al, 0
-	call _asprintf
-	cmp rax, -1
-	je .end
+mov rdi, rsp
+lea rsi, [rel kid_name_src]
+mov rdx, qword [rbp - 8]
+dec rdx
+mov al, 0
+call _asprintf
+cmp rax, -1
+je .end
 
-	mov rdi, [rel rsp]
-	mov rsi, WRCREAT_TRUNC
-	mov rdx, S_IRWXU
-	call _open
-	cmp rax, -1
-	je .end
+mov rdi, [rel rsp]
+mov rsi, WRCREAT_TRUNC
+mov rdx, S_IRWXU
+call _open
+cmp rax, -1
+je .end
 
-	mov rdi, rax
-	lea rsi, [rel src]
-	mov rdx, qword [rbp - 8]
-	dec rdx
-	mov rcx, 10
-	mov r8, 10
-	mov r9, 39
-	sub rsp, 2192
+mov rdi, rax
+lea rsi, [rel src]
+mov rdx, qword [rbp - 8]
+dec rdx
+mov rcx, 10
+mov r8, 10
+mov r9, 39
+sub rsp, 2192
 
-	lea rax, [rel src]
-	mov qword [rsp], rax
-	mov word [rsp + 8], 39
+lea rax, [rel src]
+mov qword [rsp], rax
+mov word [rsp + 8], 39
 
-	mov r11, 16
+mov r11, 16
 .set_stack:
-	mov rax, r11
-	add rax, rsp
-	mov word [rax], 10
-	add r11, 8
-	cmp r11, 2192
-	jne .set_stack
+mov rax, r11
+add rax, rsp
+mov word [rax], 10
+add r11, 8
+cmp r11, 2192
+jne .set_stack
 
-	mov al, 0
-	call _dprintf
-	add rsp, 2192
+mov al, 0
+call _dprintf
+add rsp, 2192
 
-	lea rdi, [rel rsp + 8]
-	lea rsi, [rel kid_name]
-	mov rdx, qword [rbp - 8]
-	dec rdx
-	mov al, 0
-	call _asprintf
-	cmp rax, -1
-	je .end
+lea rdi, [rel rsp + 8]
+lea rsi, [rel kid_name]
+mov rdx, qword [rbp - 8]
+dec rdx
+mov al, 0
+call _asprintf
+cmp rax, -1
+je .end
 
 
-	sub rsp, 16
-	mov rdi, rsp
-	lea rsi, [rel command_line]
-	mov rdx, [rel rsp + 16]
-	mov rcx, [rel rsp + 24]
-	mov r8, [rel rsp + 24]
-	mov r9, [rel rsp + 24]
-	mov rax, [rel rsp + 24]
-	mov qword [rsp], rax
-	mov al, 0
-	call _asprintf
-	cmp rax, -1
-	je .end
+sub rsp, 16
+mov rdi, rsp
+lea rsi, [rel command_line]
+mov rdx, [rel rsp + 16]
+mov rcx, [rel rsp + 24]
+mov r8, [rel rsp + 24]
+mov r9, [rel rsp + 24]
+mov rax, [rel rsp + 24]
+mov qword [rsp], rax
+mov al, 0
+call _asprintf
+cmp rax, -1
+je .end
 
-	mov rdi, [rel rsp]
-	call _system
-	add rsp, 16
+mov rdi, [rel rsp]
+call _system
+add rsp, 16
 
 .end:
-	add rsp, 16
-	pop rbp
-	mov rax, 0
-	ret
+add rsp, 16
+pop rbp
+mov rax, 0
+ret
 
 %endmacro
 section .text
-	MAIN
+MAIN
